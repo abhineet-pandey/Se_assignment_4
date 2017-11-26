@@ -34,10 +34,12 @@ public class nextquestionnumerical extends HttpServlet {
 	 */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+    	String move = request.getParameter("move");
 		RequestDispatcher rd = null;
 		NuQuestions num=new NuQuestions();
 		int num_id =num.getqno();
 		AuthDAO authdo =new AuthDAO();
+		if (move.equals("okay")) {
 		try {
 			if (num_id < authdo.numberofNumId()) {
 				num_id++;
@@ -54,7 +56,10 @@ public class nextquestionnumerical extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			
+		}
+		else {
+			request.setAttribute("feedback", "Complete the question before moving further");
+		}
 			request.getRequestDispatcher("/answernumerical.jsp").forward(request, response);
 		
 		}

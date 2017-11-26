@@ -24,6 +24,23 @@ out.println("<font color=red size=4px>"+login_msg+"</font>");
 
 		}
 	%>
+	<script>
+	function validateForm() {
+		var name = document.myForm.name.value;
+		var password = document.myForm.password.value;
+		if (name == null || name == "") {
+			if (password == null || password == "") {
+				alert("Enter UserName and Password.");
+				return false;
+			}
+			alert("UserName can't be blank.");
+			return false;
+		} else if (password == null || password == "") {
+			alert("Password can't be blank.");
+			return false;
+		}
+	}
+</script>
 </body>
 <form name="myForm" action="login"
 	onsubmit="return validateForm()" method="post">
@@ -36,5 +53,5 @@ out.println("<font color=red size=4px>"+login_msg+"</font>");
 
 	</select><br> <input type="submit" value="SignIn" />
 </form>
-Not a member click here to login <a href="signup.jsp"> Signup</a>
+Not a member click here to <a href="signup.jsp"> Signup</a>
 </html>

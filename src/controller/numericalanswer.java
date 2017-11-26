@@ -55,6 +55,7 @@ public class numericalanswer extends HttpServlet {
 					request.setAttribute("hint3", num.gethint3());
 				}
 				request.setAttribute("message", "Correct");
+				request.setAttribute("move", "okay");
 				request.setAttribute("over","complete");
 				request.setAttribute("feedback", num.getfeedback());
 				rd = request.getRequestDispatcher("/answernumerical.jsp");
@@ -76,6 +77,7 @@ public class numericalanswer extends HttpServlet {
 					request.setAttribute("hint1", num.gethint1());
 					request.setAttribute("hint2", num.gethint2());
 					request.setAttribute("hint3", num.gethint3());
+					request.setAttribute("move", "okay");
 					request.setAttribute("feedback", num.getfeedback());
 					request.setAttribute("message", "correct answer is " + num.getanswer());
 
@@ -83,6 +85,7 @@ public class numericalanswer extends HttpServlet {
 					request.setAttribute("hint1", num.gethint1());
 					request.setAttribute("hint2", num.gethint2());
 					request.setAttribute("hint3", num.gethint3());
+					request.setAttribute("move", "okay");
 					request.setAttribute("feedback", num.getfeedback());
 					request.setAttribute("message", "correct answer is " + num.getanswer());
 

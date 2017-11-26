@@ -1,7 +1,7 @@
 package model;
 
 public class MCQuestions {
-	public static int qnomcq;
+	private static int qnomcq;
 	public static String question;
 	public static String answer;
 	public static String choiceA;

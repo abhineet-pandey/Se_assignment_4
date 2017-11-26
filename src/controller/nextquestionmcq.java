@@ -20,40 +20,46 @@ import model.MCQuestions;
 @WebServlet("/nextquestionmcq")
 public class nextquestionmcq extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public nextquestionmcq() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public nextquestionmcq() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher rd = null;
-		MCQuestions mcq=new MCQuestions();
-		int mcq_id =mcq.getqnomcq();
-		AuthDAO authdo =new AuthDAO();
-		try {
-			if (mcq_id<authdo.numberofMCQId()) {
-				mcq_id++;
-			authdo.getMCQuestions(mcq_id);
-			
-			if (mcq_id == authdo.numberofMCQId()) {
-				request.setAttribute("message", "This is the last Question");
+		String move = request.getParameter("move");
+		System.out.println("hello " + move);
+		MCQuestions mcq = new MCQuestions();
+		int mcq_id = mcq.getqnomcq();
+		AuthDAO authdo = new AuthDAO();
+
+		if (move.equals("okay")) {
+			try {
+				if (mcq_id < authdo.numberofMCQId()) {
+					mcq_id++;
+					authdo.getMCQuestions(mcq_id);
+
+					if (mcq_id == authdo.numberofMCQId()) {
+						request.setAttribute("message", "This is the last Question");
+					}
+				} else {
+					request.setAttribute("message", "You have completed all the questions no more questions left");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			}
-			else {
-				request.setAttribute("message", "You have completed all the questions no more questions left");
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}else {
+		System.out.println(move);
+		request.setAttribute("feedback", "Complete the question before moving further");
 		}
-			
-			request.getRequestDispatcher("/answermcq.jsp").forward(request, response);
-		
-		}
+		request.getRequestDispatcher("/answermcq.jsp").forward(request, response);
 
 	}
 
+}

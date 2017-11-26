@@ -66,7 +66,12 @@ if(msg!=null)
 out.println(" "+msg+"");
 %>
 <br><input	type="submit" value="submit" /> 
-</form><form name="myForm" action="nextquestionmcq" onsubmit="return validateForm()" method="post">
+</form><form name="myForm" action="nextquestionmcq"  method="post">
+<%
+String move=(String)request.getAttribute("move");  
+if(move!=null)
+%>
+	 <input type="hidden" name="move" value=<%out.println(" "+move+"");%>><br>
 	<input	type="submit" value="Next Question" />
 </form>
 <br>Click <a href="student.jsp">here</a> to go to home Page when finished <br>

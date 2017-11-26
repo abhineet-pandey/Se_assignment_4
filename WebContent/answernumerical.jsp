@@ -20,7 +20,7 @@
 			out.println("\n");
 			out.println("Q. No." + num.getqno() +" " + num.getquestion() + " ?");
 		%><br>
-		
+	
 		<form name="myForm" action="numericalanswer"
 	onsubmit="return validateForm()" method="post">
 	<br>
@@ -56,6 +56,11 @@ out.println(" "+msg+"");
 %>
 <br><input	type="submit" value="submit" /> 
 </form><form name="myForm" action="nextquestionnumerical" onsubmit="return validateForm()" method="post">
+<%
+String move=(String)request.getAttribute("move");  
+if(move!=null)
+%>
+	 <input type="hidden" name="move" value=<%out.println(" "+move+"");%>><br>
 	<input	type="submit" value="Next Question" />
 </form>
 <br>Click <a href="student.jsp">here</a> to go to home Page when finished <br>

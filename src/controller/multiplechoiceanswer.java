@@ -35,7 +35,7 @@ public class multiplechoiceanswer extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		MCQuestions mcq = new MCQuestions();
 		String answer = request.getParameter("answer");
 		RequestDispatcher rd = null;
@@ -54,6 +54,7 @@ public class multiplechoiceanswer extends HttpServlet {
 					request.setAttribute("hint3", mcq.gethint3());
 				}
 				request.setAttribute("message", "Correct");
+				request.setAttribute("move", "okay");
 				request.setAttribute("feedback", mcq.getfeedback());
 				rd = request.getRequestDispatcher("/answermcq.jsp");
 				rd.include(request, response);
@@ -75,6 +76,7 @@ public class multiplechoiceanswer extends HttpServlet {
 					request.setAttribute("hint2", mcq.gethint2());
 					request.setAttribute("hint3", mcq.gethint3());
 					request.setAttribute("feedback", mcq.getfeedback());
+					request.setAttribute("move", "okay");
 					request.setAttribute("message", "correct answer is " + mcq.getanswer());
 
 				} else {
@@ -82,6 +84,7 @@ public class multiplechoiceanswer extends HttpServlet {
 					request.setAttribute("hint2", mcq.gethint2());
 					request.setAttribute("hint3", mcq.gethint3());
 					request.setAttribute("feedback", mcq.getfeedback());
+					request.setAttribute("move", "okay");
 					request.setAttribute("message", "correct answer is " + mcq.getanswer());
 
 				}
