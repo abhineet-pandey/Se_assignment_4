@@ -5,6 +5,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta name="description"
+	content="Source code generated using layoutit.com">
+<meta name="author" content="LayoutIt!">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 	<script>
@@ -47,11 +55,7 @@
 </script>
 </head>
 <h2>
-	<%
-		String login_msg = (String) request.getAttribute("error");
-		if (login_msg != null)
-			out.println("<font color=red size=4px>" + login_msg + "</font>");
-	%>
+	
 </h2>
 <body>
 	<%
@@ -66,24 +70,40 @@
 		}
 	%>
 	
-	<%
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="text-center text-primary">
+			<%
 			User user = new User();
 			java.util.Date d = new java.util.Date();
 			out.println("Welcome " + user.getRole() + " " + user.getfirstname() + " " +user.getlastname() +"!");
-			out.println("          Current Time And Date is " + d.toString());
+			
 		%>
-</body>
+		</h1>
+		</div>
+	</div>
+<h5 class="text-center">
+	<%out.println("          Current Time And Date is " + d.toString()); %> </h5>
 
-<form name="myForm" action="numerical" onsubmit="return validateForm()"
+
+<form name="myForm" class="col-md-6 mb-3" action="numerical" onsubmit="return validateForm()"
 	method="post">
-	Question: <input type="text" name="question" placeholder="question"><br>
-	Answer :  <input type="text" name="answer" placeholder="answer"><br>
-	Hint 1:   <input type="text" name="hint1" placeholder="hint1"> <br>
-	Hint 2:   <input type="text" name="hint2" placeholder="hint2"> <br>
-	Hint 3:   <input type="text" name="hint3" placeholder="hint3"> <br>
-	FeedBack: <input type="text" name="feedback" placeholder="Feedback">
-	<br> <br> <input type="submit" value="Save and Next Question" />
-	<a href="student.jsp">I am Done </a>
+	<%
+		String login_msg = (String) request.getAttribute("error");
+		if (login_msg != null)
+			out.println("<font color=red size=4px>" + login_msg + "</font>");
+	%><br>
+	Question: <input type="text" class="form-control" name="question" placeholder="question"><br>
+	Answer :  <input type="text" class="form-control" name="answer" placeholder="answer"><br>
+	Hint 1:   <input type="text" class="form-control" name="hint1" placeholder="hint1"> <br>
+	Hint 2:   <input type="text" class="form-control" name="hint2" placeholder="hint2"> <br>
+	Hint 3:   <input type="text" class="form-control" name="hint3" placeholder="hint3"> <br>
+	FeedBack: <input type="text" class="form-control" name="feedback" placeholder="Feedback">
+	<br> <br> <input type="submit" class="btn btn-primary" value="Save and Next Question" />
+	<button type="button" class="btn  btn">
+	<a href="student.jsp">I am Done </a></button>
 
 </form>
+</body>
 </html>

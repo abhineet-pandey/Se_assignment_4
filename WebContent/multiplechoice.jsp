@@ -5,15 +5,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Assignment 4</title>
+
+<meta name="description"
+	content="Source code generated using layoutit.com">
+<meta name="author" content="LayoutIt!">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 </head>
 <h2>
-	<%
-		String login_msg = (String) request.getAttribute("error");
-		if (login_msg != null)
-			out.println("<font color=red size=4px>" + login_msg + "</font>");
-	%>
+	
 </h2>
 <body>
 	<%
@@ -27,13 +36,22 @@
 
 		}
 	%>
-	<%
-		User user = new User();
-		java.util.Date d = new java.util.Date();
-		out.println("Welcome " + user.getRole() + " " + user.getfirstname() + " " + user.getlastname() + "!");
-		out.println("          Current Time And Date is " + d.toString());
-	%>
-
+	
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="text-center text-primary">
+			<%
+			User user = new User();
+			java.util.Date d = new java.util.Date();
+			out.println("Welcome " + user.getRole() + " " + user.getfirstname() + " " +user.getlastname() +"!");
+			
+		%>
+		</h1>
+		</div>
+	</div>
+<h5 class="text-center">
+	<%out.println("          Current Time And Date is " + d.toString()); %> </h5>
 <script>
 	function validateForm() {
 		var question = document.myForm.question.value;
@@ -84,25 +102,31 @@
 	}
 </script>
 
-<form name="myForm" action="multiplechoice"
+<form name="myForm" class="col-md-6 mb-3" action="multiplechoice"
 	onsubmit="return validateForm()" method="post">
-	Question: <input type="text" name="question" placeholder="question"><br>
-	Choice A: <input type="text" name="choiceA" placeholder="choiceA"><br>
-	Choice B: <input type="text" name="choiceB" placeholder="choiceB"><br>
-	Choice C: <input type="text" name="choiceC" placeholder="choiceC"><br>
-	Choice D: <input type="text" name="choiceD" placeholder="choiceD"><br>
-	Answer : <select name="answer">
+	<%
+		String login_msg = (String) request.getAttribute("error");
+		if (login_msg != null)
+			out.println("<font color=red size=4px>" + login_msg + "</font>");
+	%><br>
+	Question: <input type="text" class="form-control" name="question" placeholder="question"><br>
+	Choice A: <input type="text" class="form-control" name="choiceA" placeholder="choiceA"><br>
+	Choice B: <input type="text" class="form-control" name="choiceB" placeholder="choiceB"><br>
+	Choice C: <input type="text" class="form-control" name="choiceC" placeholder="choiceC"><br>
+	Choice D: <input type="text" class="form-control" name="choiceD" placeholder="choiceD"><br>
+	Answer : <select name="answer" class="form-control">
 			<option value="a">A</option>
 			<option value="b">B</option>
 			<option value="c">C</option>
 			<option value="d">D</option>
 			</select> <br>
-     Hint 1:   <input type="text" name="hint1" placeholder="hint1">
-<br> Hint 2:  <input type="text" name="hint2" placeholder="hint2">
-<br> Hint 3:  <input type="text" name="hint3" placeholder="hint3">
-<br> FeedBack:<input type="text" name="feedback"placeholder="feedback"> <br> <br> 
-			  <input type="submit" value="Save and Next Question" /> 
-<a href="student.jsp">I am Done </a>
+     Hint 1:   <input type="text" class="form-control" name="hint1" placeholder="hint1">
+<br> Hint 2:  <input type="text" class="form-control" name="hint2" placeholder="hint2">
+<br> Hint 3:  <input type="text" class="form-control" name="hint3" placeholder="hint3">
+<br> FeedBack:<input type="text" class="form-control" name="feedback"placeholder="feedback"> <br> <br> 
+			  <input type="submit" class="btn btn-primary" value="Save and Next Question" /> 
+			  <button type="button" class="btn  btn">
+<a href="student.jsp">I am Done </a></button>
 </form>
 </body>
 </html>

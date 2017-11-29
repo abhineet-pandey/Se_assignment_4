@@ -5,17 +5,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="style.css">
+
+<meta name="description"
+	content="Source code generated using layoutit.com">
+<meta name="author" content="LayoutIt!">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-				User user = new User();
-		java.util.Date d = new java.util.Date();
-		out.println("Welcome " + user.getRole() + " " + user.getfirstname() + " " +user.getlastname() +"!");
-		out.println("          Current Time And Date is " + d.toString());
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="text-center text-primary">
+					<%
+						User user = new User();
+						java.util.Date d = new java.util.Date();
+						out.println("Welcome " + user.getRole() + " " + user.getfirstname() + " " + user.getlastname() + "!");
+					%>
+				</h1>
+			</div>
+		</div>
+		<h5 class="text-center">
+			<%
+				out.println("          Current Time And Date is " + d.toString());
 			%>
-			<br>
+		</h5>
+			<div class="wrapper">
+		
 			<%NuQuestions num = new NuQuestions();
 			out.println("\n");
 			out.println("Q. No." + num.getqno() +" " + num.getquestion() + " ?");
@@ -54,15 +74,21 @@ String msg=(String)request.getAttribute("message");
 if(msg!=null)
 out.println(" "+msg+"");
 %>
-<br><input	type="submit" value="submit" /> 
+<br>
+<div class="btn-group btn-group-justified">
+
+<br><input	type="submit" class="btn btn-primary" value="submit" /> 
 </form><form name="myForm" action="nextquestionnumerical" onsubmit="return validateForm()" method="post">
 <%
 String move=(String)request.getAttribute("move");  
 if(move!=null)
 %>
-	 <input type="hidden" name="move" value=<%out.println(" "+move+"");%>><br>
-	<input	type="submit" value="Next Question" />
+	 <input type="hidden" name="move" value=<%out.println(" "+move+"");%>>
+	<input	type="submit" class="btn btn-primary" value="Next Question" />
 </form>
-<br>Click <a href="student.jsp">here</a> to go to home Page when finished <br>
+<button type="button" class="btn btn-danger">
+				<a href="student.jsp">I am Done </a>
+			</button></div></div>
+			</div>
 	</body>
 </html>
